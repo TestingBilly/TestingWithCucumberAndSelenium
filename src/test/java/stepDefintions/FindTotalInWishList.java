@@ -17,6 +17,7 @@ public class FindTotalInWishList {
     double itemPrice3;
     double itemPrice4;
     double total;
+    double [] prices;
     String price1;
     String price2;
     String price3;
@@ -43,7 +44,7 @@ public class FindTotalInWishList {
         itemPrice3 = Double.parseDouble(price3);
         price4 = driver.findElement(By.xpath("//tr[4]/td[4]")).getText();
         itemPrice4 = Double.parseDouble(price4);
-        double [] prices = {itemPrice4,itemPrice3,itemPrice2,itemPrice1};
+        prices = new double[]{itemPrice4, itemPrice3, itemPrice2, itemPrice1};
         total = itemPrice1+itemPrice2+itemPrice3+itemPrice4;
     }
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 public class AddToWishlist {
     public WebDriver driver;
+    double cheapest;
 
 
     @Given("I add four different products to my wish list")
@@ -26,7 +27,23 @@ public class AddToWishlist {
     System.out.println(total);}
 
     @When("I search for lowest price product")
-    public void lowest_price_item_found(){}
+    public void lowest_price_item_found(){FindTotalInWishList findTotalInWishList = new FindTotalInWishList();
+
+        double x, size;
+        size = findTotalInWishList.prices.length;
+
+        for (int i = 0; i<size; i++){
+            for (int j = i+1; j<size; j++){
+                if(findTotalInWishList.prices[i]>findTotalInWishList.prices[j]){
+                    x = findTotalInWishList.prices[i];
+                    findTotalInWishList.prices[i] = findTotalInWishList.prices[j];
+                    findTotalInWishList.prices[j] = x;
+                    cheapest = findTotalInWishList.prices[j];
+                }
+            }
+
+        }
+    }
 
     @And("I am able to add the lowest price item to my cart")
     public void lowest_item_in_cart(){}
