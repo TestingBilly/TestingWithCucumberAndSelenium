@@ -22,6 +22,9 @@ public class FindTotalInWishList {
     String price2;
     String price3;
     String price4;
+
+    public FindTotalInWishList(WebDriver driver) {
+    }
 //
 //    public void setUp() {
 //        driver = new ChromeDriver();

@@ -15,6 +15,9 @@ public class AddItemsToWishlist {
     private Map<String, Object> vars;
     JavascriptExecutor js;
 
+    public AddItemsToWishlist(WebDriver driver) {
+    }
+
     public void setUp() {
         driver = new ChromeDriver();
         js = (JavascriptExecutor) driver;

@@ -13,21 +13,28 @@ public class AddToWishlist {
 
     @Given("I add four different products to my wish list")
     public void user_add_items_to_wishlist(){
-        new AddItemsToWishlist();
+        AddItemsToWishlist addItemsToWishlist = new AddItemsToWishlist(driver);
+        addItemsToWishlist.setUp();
+        addItemsToWishlist.addItemsToWishList();
     }
 
     @When("I view my wishlist table")
     public void user_views_wishlist(){
-        new LookAtWishList();
+        LookAtWishList lookAtWishList = new LookAtWishList(driver);
+        lookAtWishList.lookAtWishList();
     }
 
     @Then("I find total four selected items in my Wishlist")
-    public void total_of_items_selected(){ FindTotalInWishList findTotalInWishList = new FindTotalInWishList();
+    public void total_of_items_selected(){
+        FindTotalInWishList findTotalInWishList = new FindTotalInWishList(driver);
+        findTotalInWishList.lookAtWishListAndGetPrices();
     double total = findTotalInWishList.total;
     System.out.println(total);}
 
     @When("I search for lowest price product")
-    public void lowest_price_item_found(){FindTotalInWishList findTotalInWishList = new FindTotalInWishList();
+    public void lowest_price_item_found(){
+        FindTotalInWishList findTotalInWishList = new FindTotalInWishList(driver);
+        findTotalInWishList.lookAtWishListAndGetPrices();
 
         double x, size;
         size = findTotalInWishList.prices.length;

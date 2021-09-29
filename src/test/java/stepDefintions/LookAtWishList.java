@@ -13,7 +13,10 @@ public class LookAtWishList{
     private Map<String, Object> vars;
     JavascriptExecutor js;
 
- //   public void setUp() {
+    public LookAtWishList(WebDriver driver) {
+    }
+
+    //   public void setUp() {
  //       driver = new ChromeDriver();
  //       js = (JavascriptExecutor) driver;
  //       vars = new HashMap<String, Object>();
