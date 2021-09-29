@@ -1,5 +1,6 @@
 package stepDefintions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -20,7 +21,14 @@ public class AddToWishlist {
     }
 
     @Then("I find total four selected items in my Wishlist")
-    public void total_of_items_selected(){
-        
-    }
+    public void total_of_items_selected(){}
+
+    @When("I search for lowest price product")
+    public void lowest_price_item_found(){}
+
+    @And("I am able to add the lowest price item to my cart")
+    public void lowest_item_in_cart(){}
+
+    @Then("I am able to verify the item in my cart")
+    public void item_in_cart_check(){}
 }
