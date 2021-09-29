@@ -7,7 +7,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AddToWishlist {
+public class AddToWishlistTest {
     public WebDriver driver;
     double cheapest;
 
@@ -80,5 +80,9 @@ public class AddToWishlist {
         if (cartCheck.cartTotal != cheapest){
             System.out.println("ERROR");
         }
+        if (cartCheck.cartTotal == cheapest){
+            System.out.println("This Worked");
+        }
+        cartCheck.tearDown();
     }
 }
