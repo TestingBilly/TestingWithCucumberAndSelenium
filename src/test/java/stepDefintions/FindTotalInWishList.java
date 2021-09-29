@@ -23,6 +23,11 @@ public class FindTotalInWishList {
     String price3;
     String price4;
 
+
+    String addToCart2;
+    String addToCart3;
+    String addToCart4;
+
     public FindTotalInWishList(WebDriver driver) {
     }
 //
@@ -36,9 +41,9 @@ public class FindTotalInWishList {
 //        driver.quit();
 //    }
     public void lookAtWishListAndGetPrices() {
-        driver.get("https://testscriptdemo.com/");
-        driver.manage().window().setSize(new Dimension(1296, 736));
-        driver.findElement(By.cssSelector(".header-wishlist:nth-child(3) .lar")).click();
+      //  driver.get("https://testscriptdemo.com/");
+      //  driver.manage().window().setSize(new Dimension(1296, 736));
+     //   driver.findElement(By.cssSelector(".header-wishlist:nth-child(3) .lar")).click();
         price1 = driver.findElement(By.xpath("//td[4]")).getText();
         itemPrice1 = Double.parseDouble(price1);
         price2 = driver.findElement(By.xpath("//tr[2]/td[4]")).getText();
@@ -49,5 +54,6 @@ public class FindTotalInWishList {
         itemPrice4 = Double.parseDouble(price4);
         prices = new double[]{itemPrice4, itemPrice3, itemPrice2, itemPrice1};
         total = itemPrice1+itemPrice2+itemPrice3+itemPrice4;
+
     }
 }
