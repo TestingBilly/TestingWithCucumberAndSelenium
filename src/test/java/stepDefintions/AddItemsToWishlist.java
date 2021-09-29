@@ -21,9 +21,9 @@ public class AddItemsToWishlist {
         vars = new HashMap<String, Object>();
     }
 
-    public void tearDown() {
-        driver.quit();
-    }
+//    public void tearDown() {
+//        driver.quit();
+//    }
 
     public void addItemsToWishList() {
         driver.get("https://testscriptdemo.com/");
