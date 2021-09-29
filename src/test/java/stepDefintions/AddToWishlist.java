@@ -21,7 +21,9 @@ public class AddToWishlist {
     }
 
     @Then("I find total four selected items in my Wishlist")
-    public void total_of_items_selected(){}
+    public void total_of_items_selected(){ FindTotalInWishList findTotalInWishList = new FindTotalInWishList();
+    double total = findTotalInWishList.total;
+    System.out.println(total);}
 
     @When("I search for lowest price product")
     public void lowest_price_item_found(){}
