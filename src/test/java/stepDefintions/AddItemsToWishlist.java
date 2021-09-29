@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.JavascriptExecutor;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class AddItemsToWishlist {
     private WebDriver driver;
@@ -31,6 +32,7 @@ public class AddItemsToWishlist {
     public void addItemsToWishList() {
         driver.get("https://testscriptdemo.com/");
         driver.manage().window().setSize(new Dimension(1296, 736));
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.findElement(By.cssSelector(".elementor-shortcode:nth-child(1) .product:nth-child(1) > .product-compare-wishlist:nth-child(3) span:nth-child(2)")).click();
         driver.findElement(By.cssSelector(".elementor-shortcode:nth-child(1) .product:nth-child(2) > .product-compare-wishlist:nth-child(3) span:nth-child(2)")).click();
         driver.findElement(By.cssSelector(".elementor-shortcode:nth-child(1) .product:nth-child(3) > .product-compare-wishlist:nth-child(3) span:nth-child(2)")).click();

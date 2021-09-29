@@ -8,6 +8,8 @@ import org.openqa.selenium.JavascriptExecutor;
 
 import java.sql.Array;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
+
 public class FindTotalInWishList {
     private WebDriver driver;
     private Map<String, Object> vars;
@@ -44,6 +46,8 @@ public class FindTotalInWishList {
       //  driver.get("https://testscriptdemo.com/");
       //  driver.manage().window().setSize(new Dimension(1296, 736));
      //   driver.findElement(By.cssSelector(".header-wishlist:nth-child(3) .lar")).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
         price1 = driver.findElement(By.xpath("//td[4]")).getText();
         itemPrice1 = Double.parseDouble(price1);
         price2 = driver.findElement(By.xpath("//tr[2]/td[4]")).getText();

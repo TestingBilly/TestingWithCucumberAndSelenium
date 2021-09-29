@@ -77,6 +77,7 @@ public class AddToWishlistTest {
     @Then("I am able to verify the item in my cart")
     public void item_in_cart_check(){
         CartCheck cartCheck = new CartCheck(driver);
+        cartCheck.cartCheck();
         if (cartCheck.cartTotal != cheapest){
             System.out.println("ERROR");
         }
