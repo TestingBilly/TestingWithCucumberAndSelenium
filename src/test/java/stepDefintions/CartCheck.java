@@ -8,7 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-public class CartCheck {
+public class CartCheck extends driverSetup{
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
@@ -24,19 +24,19 @@ public class CartCheck {
    // }
 
     public void tearDown() {
-        driver.quit();
+        driverBig.quit();
     }
 
     public void cartCheck() {
 
-        driver.get("https://testscriptdemo.com/");
-        driver.manage().window().setSize(new Dimension(1296, 736));
-        driver.findElement(By.cssSelector(".heading-row")).click();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driverBig.get("https://testscriptdemo.com/");
+        driverBig.manage().window().setSize(new Dimension(1296, 736));
+        driverBig.findElement(By.cssSelector(".heading-row")).click();
+        driverBig.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-        driver.findElement(By.cssSelector(".header-right > .header-cart .la")).click();
+        driverBig.findElement(By.cssSelector(".header-right > .header-cart .la")).click();
 
-        toalCart = driver.findElement(By.xpath("//div/table/tbody/tr[2]")).getText();
+        toalCart = driverBig.findElement(By.xpath("//div/table/tbody/tr[2]")).getText();
         cartTotal = Double.parseDouble(toalCart);
 
     }

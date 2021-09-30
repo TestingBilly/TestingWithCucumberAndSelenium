@@ -10,7 +10,7 @@ import java.sql.Array;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-public class FindTotalInWishList {
+public class FindTotalInWishList extends driverSetup {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
@@ -46,15 +46,15 @@ public class FindTotalInWishList {
       //  driver.get("https://testscriptdemo.com/");
       //  driver.manage().window().setSize(new Dimension(1296, 736));
      //   driver.findElement(By.cssSelector(".header-wishlist:nth-child(3) .lar")).click();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driverBig.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-        price1 = driver.findElement(By.xpath("//td[4]")).getText();
+        price1 = driverBig.findElement(By.xpath("//td[4]")).getText();
         itemPrice1 = Double.parseDouble(price1);
-        price2 = driver.findElement(By.xpath("//tr[2]/td[4]")).getText();
+        price2 = driverBig.findElement(By.xpath("//tr[2]/td[4]")).getText();
         itemPrice2 = Double.parseDouble(price2);
-        price3 = driver.findElement(By.xpath("//tr[3]/td[4]")).getText();
+        price3 = driverBig.findElement(By.xpath("//tr[3]/td[4]")).getText();
         itemPrice3 = Double.parseDouble(price3);
-        price4 = driver.findElement(By.xpath("//tr[4]/td[4]")).getText();
+        price4 = driverBig.findElement(By.xpath("//tr[4]/td[4]")).getText();
         itemPrice4 = Double.parseDouble(price4);
         prices = new double[]{itemPrice4, itemPrice3, itemPrice2, itemPrice1};
         total = itemPrice1+itemPrice2+itemPrice3+itemPrice4;

@@ -8,7 +8,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import java.util.*;
 
-public class LookAtWishList{
+public class LookAtWishList extends driverSetup{
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
@@ -28,7 +28,7 @@ public class LookAtWishList{
 
     public void lookAtWishList() {
        // driver.get("https://testscriptdemo.com/");
-        driver.manage().window().setSize(new Dimension(1296, 736));
-        driver.findElement(By.cssSelector(".header-wishlist:nth-child(3) .lar")).click();
+        driverBig.manage().window().setSize(new Dimension(1296, 736));
+        driverBig.findElement(By.cssSelector(".header-wishlist:nth-child(3) .lar")).click();
     }
 }

@@ -7,34 +7,34 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AddToWishlistTest {
+public class AddToWishlistTest extends driverSetup{
 
     static public WebDriver driver;
     double cheapest;
 
     @Given("I add four different products to my wish list")
     public void user_add_items_to_wishlist(){
-        AddItemsToWishlist addItemsToWishlist = new AddItemsToWishlist(driver);
+        AddItemsToWishlist addItemsToWishlist = new AddItemsToWishlist(driverBig);
         addItemsToWishlist.setUp();
         addItemsToWishlist.addItemsToWishList();
     }
 
     @When("I view my wishlist table")
     public void user_views_wishlist(){
-        LookAtWishList lookAtWishList = new LookAtWishList(driver);
+        LookAtWishList lookAtWishList = new LookAtWishList(driverBig);
         lookAtWishList.lookAtWishList();
     }
 
     @Then("I find total four selected items in my Wishlist")
     public void total_of_items_selected(){
-        FindTotalInWishList findTotalInWishList = new FindTotalInWishList(driver);
+        FindTotalInWishList findTotalInWishList = new FindTotalInWishList(driverBig);
         findTotalInWishList.lookAtWishListAndGetPrices();
     double total = findTotalInWishList.total;
     System.out.println(total);}
 
     @When("I search for lowest price product")
     public void lowest_price_item_found(){
-        FindTotalInWishList findTotalInWishList = new FindTotalInWishList(driver);
+        FindTotalInWishList findTotalInWishList = new FindTotalInWishList(driverBig);
         findTotalInWishList.lookAtWishListAndGetPrices();
 
         double x, size;
@@ -56,7 +56,7 @@ public class AddToWishlistTest {
 
     @And("I am able to add the lowest price item to my cart")
     public void lowest_item_in_cart(){
-        FindTotalInWishList findTotalInWishList = new FindTotalInWishList(driver);
+        FindTotalInWishList findTotalInWishList = new FindTotalInWishList(driverBig);
         findTotalInWishList.lookAtWishListAndGetPrices();
 
         if (cheapest == findTotalInWishList.prices[0]){
@@ -76,7 +76,7 @@ public class AddToWishlistTest {
 
     @Then("I am able to verify the item in my cart")
     public void item_in_cart_check(){
-        CartCheck cartCheck = new CartCheck(driver);
+        CartCheck cartCheck = new CartCheck(driverBig);
         cartCheck.cartCheck();
         if (cartCheck.cartTotal != cheapest){
             System.out.println("ERROR");
