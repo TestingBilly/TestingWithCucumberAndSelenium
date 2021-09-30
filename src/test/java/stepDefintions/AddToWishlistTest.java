@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class AddToWishlistTest {
-    public WebDriver driver;
+    static public WebDriver driver;
     double cheapest;
 
 

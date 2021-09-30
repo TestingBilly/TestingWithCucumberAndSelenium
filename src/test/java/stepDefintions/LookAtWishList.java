@@ -27,7 +27,7 @@ public class LookAtWishList{
  //   }
 
     public void lookAtWishList() {
-        driver.get("https://testscriptdemo.com/");
+       // driver.get("https://testscriptdemo.com/");
         driver.manage().window().setSize(new Dimension(1296, 736));
         driver.findElement(By.cssSelector(".header-wishlist:nth-child(3) .lar")).click();
     }
