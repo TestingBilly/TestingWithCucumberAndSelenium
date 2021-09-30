@@ -8,9 +8,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class AddToWishlistTest {
+
     static public WebDriver driver;
     double cheapest;
-
 
     @Given("I add four different products to my wish list")
     public void user_add_items_to_wishlist(){
