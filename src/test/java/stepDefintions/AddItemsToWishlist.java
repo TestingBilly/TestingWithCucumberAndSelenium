@@ -12,7 +12,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-public class AddItemsToWishlist extends driverSetup{
+public class AddItemsToWishlist{
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
@@ -20,34 +20,27 @@ public class AddItemsToWishlist extends driverSetup{
     public AddItemsToWishlist(WebDriver driver) {
     }
 
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driverBig = new ChromeDriver();
-        js = (JavascriptExecutor) driverBig;
-        vars = new HashMap<String, Object>();
-    }
-
 //    public void tearDown() {
 //        driver.quit();
 //    }
 
     public void addItemsToWishList() {
-        driverBig.get("https://testscriptdemo.com/");
-        driverBig.manage().window().setSize(new Dimension(1296, 736));
-        driverBig.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driverBig.findElement(By.cssSelector(".elementor-shortcode:nth-child(1) .product:nth-child(1) > .product-compare-wishlist:nth-child(3) span:nth-child(2)")).click();
-        driverBig.findElement(By.cssSelector(".elementor-shortcode:nth-child(1) .product:nth-child(2) > .product-compare-wishlist:nth-child(3) span:nth-child(2)")).click();
-        driverBig.findElement(By.cssSelector(".elementor-shortcode:nth-child(1) .product:nth-child(3) > .product-compare-wishlist:nth-child(3) span:nth-child(2)")).click();
+        driver.get("https://testscriptdemo.com/");
+        driver.manage().window().setSize(new Dimension(1296, 736));
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.findElement(By.cssSelector(".elementor-shortcode:nth-child(1) .product:nth-child(1) > .product-compare-wishlist:nth-child(3) span:nth-child(2)")).click();
+        driver.findElement(By.cssSelector(".elementor-shortcode:nth-child(1) .product:nth-child(2) > .product-compare-wishlist:nth-child(3) span:nth-child(2)")).click();
+        driver.findElement(By.cssSelector(".elementor-shortcode:nth-child(1) .product:nth-child(3) > .product-compare-wishlist:nth-child(3) span:nth-child(2)")).click();
         {
-            WebElement element = driverBig.findElement(By.cssSelector(".elementor-shortcode:nth-child(1) .product:nth-child(3) > .product-compare-wishlist:nth-child(3) span:nth-child(2)"));
-            Actions builder = new Actions(driverBig);
+            WebElement element = driver.findElement(By.cssSelector(".elementor-shortcode:nth-child(1) .product:nth-child(3) > .product-compare-wishlist:nth-child(3) span:nth-child(2)"));
+            Actions builder = new Actions(driver);
             builder.moveToElement(element).perform();
         }
         {
-            WebElement element = driverBig.findElement(By.tagName("body"));
-            Actions builder = new Actions(driverBig);
+            WebElement element = driver.findElement(By.tagName("body"));
+            Actions builder = new Actions(driver);
             builder.moveToElement(element, 0, 0).perform();
         }
-        driverBig.findElement(By.cssSelector(".add-to-wishlist-23 span")).click();
+        driver.findElement(By.cssSelector(".add-to-wishlist-23 span")).click();
     }
 }
