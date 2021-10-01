@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 public class driverSetup {
     static WebDriver driver;
-    @Before
 
+    @Before
     public static WebDriver setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();

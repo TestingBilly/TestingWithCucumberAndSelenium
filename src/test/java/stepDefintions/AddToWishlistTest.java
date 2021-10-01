@@ -55,76 +55,102 @@ public class AddToWishlistTest {
     @When("I view my wishlist table")
     public void user_views_wishlist(){
         driver.get("https://testscriptdemo.com/?page_id=233&wishlist-action");
+
     }
 
     @Then("I find total four selected items in my Wishlist")
     public void total_of_items_selected(){
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(300, TimeUnit.SECONDS);
 
         price1 = driver.findElement(By.xpath("//td[4]")).getText();
+        price1 = price1.replaceAll("[^\\d.]", "");
+        price1=price1.substring(4);
         itemPrice1 = Double.parseDouble(price1);
         price2 = driver.findElement(By.xpath("//tr[2]/td[4]")).getText();
+        price2 = price2.replaceAll("[^\\d.]", "");
+        price2=price2.substring(4);
         itemPrice2 = Double.parseDouble(price2);
         price3 = driver.findElement(By.xpath("//tr[3]/td[4]")).getText();
+        price3 = price3.replaceAll("[^\\d.]", "");
+        price3=price3.substring(4);
         itemPrice3 = Double.parseDouble(price3);
         price4 = driver.findElement(By.xpath("//tr[4]/td[4]")).getText();
+        price4 = price4.replaceAll("[^\\d.]", "");
+        price4=price4.substring(4);
         itemPrice4 = Double.parseDouble(price4);
         prices = new double[]{itemPrice4, itemPrice3, itemPrice2, itemPrice1};
         total = itemPrice1+itemPrice2+itemPrice3+itemPrice4;
         System.out.println(total);}
 
     @When("I search for lowest price product")
-    public void lowest_price_item_found(){
+    public void lowest_price_item_found() {
+        driver.get("https://testscriptdemo.com/?page_id=233&wishlist-action");
+
         price1 = driver.findElement(By.xpath("//td[4]")).getText();
+        price1 = price1.replaceAll("[^\\d.]", "");
+        price1 = price1.substring(4);
         itemPrice1 = Double.parseDouble(price1);
         price2 = driver.findElement(By.xpath("//tr[2]/td[4]")).getText();
+        price2 = price2.replaceAll("[^\\d.]", "");
+        price2 = price2.substring(4);
         itemPrice2 = Double.parseDouble(price2);
         price3 = driver.findElement(By.xpath("//tr[3]/td[4]")).getText();
+        price3 = price3.replaceAll("[^\\d.]", "");
+        price3 = price3.substring(4);
         itemPrice3 = Double.parseDouble(price3);
         price4 = driver.findElement(By.xpath("//tr[4]/td[4]")).getText();
+        price4 = price4.replaceAll("[^\\d.]", "");
+        price4 = price4.substring(4);
         itemPrice4 = Double.parseDouble(price4);
         prices = new double[]{itemPrice4, itemPrice3, itemPrice2, itemPrice1};
+        //System.out.println(prices[0] + "" + prices[1] + "" + prices[2] + "" + prices[3]);
 
-        double x, size;
-        size = prices.length;
+       cheapest = Integer.MAX_VALUE;
+        int index = 0;
 
-        for (int i = 0; i<size; i++){
-            for (int j = i+1; j<size; j++){
-                if(prices[i]>prices[j]){
-                    x = prices[i];
-                    prices[i] = prices[j];
-                    prices[j] = x;
-                    cheapest = prices[j];
-                }
+        while(index<prices.length){
+            if(cheapest>prices[index]){
+                cheapest = prices[index];
             }
-
+            index++;
         }
+
         System.out.println(cheapest);
     }
 
     @And("I am able to add the lowest price item to my cart")
     public void lowest_item_in_cart(){
+        driver.get("https://testscriptdemo.com/?page_id=233&wishlist-action");
+
         price1 = driver.findElement(By.xpath("//td[4]")).getText();
+        price1 = price1.replaceAll("[^\\d.]", "");
+        price1=price1.substring(4);
         itemPrice1 = Double.parseDouble(price1);
         price2 = driver.findElement(By.xpath("//tr[2]/td[4]")).getText();
+        price2 = price2.replaceAll("[^\\d.]", "");
+        price2=price2.substring(4);
         itemPrice2 = Double.parseDouble(price2);
         price3 = driver.findElement(By.xpath("//tr[3]/td[4]")).getText();
+        price3 = price3.replaceAll("[^\\d.]", "");
+        price3=price3.substring(4);
         itemPrice3 = Double.parseDouble(price3);
         price4 = driver.findElement(By.xpath("//tr[4]/td[4]")).getText();
+        price4 = price4.replaceAll("[^\\d.]", "");
+        price4=price4.substring(4);
         itemPrice4 = Double.parseDouble(price4);
         prices = new double[]{itemPrice4, itemPrice3, itemPrice2, itemPrice1};
         total = itemPrice1+itemPrice2+itemPrice3+itemPrice4;
 
-        if (cheapest == prices[0]){
+        if (cheapest == itemPrice1){
             driver.findElement(By.xpath("//td[6]")).click();
         }
-        if (cheapest == prices[1]){
+        else if (cheapest == itemPrice2){
             driver.findElement(By.xpath("//tr[2]/td[6]")).click();
         }
-        if (cheapest == prices[2]){
+        else if (cheapest == itemPrice3){
             driver.findElement(By.xpath("//tr[3]/td[6]")).click();
         }
-        if (cheapest == prices[3]){
+        else if (cheapest == itemPrice4){
             driver.findElement(By.xpath("//tr[4]/td[6]")).click();
         }
 
@@ -132,12 +158,20 @@ public class AddToWishlistTest {
 
     @Then("I am able to verify the item in my cart")
     public void item_in_cart_check(){
-        CartCheck cartCheck = new CartCheck(driver);
-        cartCheck.cartCheck();
-        if (cartCheck.cartTotal != cheapest){
+        driver.get("https://testscriptdemo.com/?page_id=299");
+        driver.manage().timeouts().implicitlyWait(300, TimeUnit.SECONDS);
+        driver.findElement(By.cssSelector(".header-right > .header-cart .la")).click();
+
+        String toalCart = driver.findElement(By.xpath("//div/table/tbody/tr[2]")).getText();
+        toalCart=toalCart.replaceAll("[^\\d.]", "");
+
+        Double cartTotal = Double.parseDouble(toalCart);
+        System.out.println(cartTotal);
+        System.out.println(cheapest);
+        if (cartTotal != cheapest){
             System.out.println("ERROR");
         }
-        if (cartCheck.cartTotal == cheapest){
+        if (cartTotal == cheapest){
             System.out.println("This Worked");
         }
         driverSetup.tearDown(driver);
