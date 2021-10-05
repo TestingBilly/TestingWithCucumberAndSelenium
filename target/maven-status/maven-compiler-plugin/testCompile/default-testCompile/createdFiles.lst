@@ -1,0 +1,7 @@
+stepDefinitions\TestRunner.class
+otherFunctions\LookAtWishList.class
+otherFunctions\FindTotalInWishList.class
+otherFunctions\driverSetup.class
+otherFunctions\AddItemsToWishlist.class
+otherFunctions\CartCheck.class
+stepDefinitions\AddToWishlistSteps.class
