@@ -1,4 +1,4 @@
-package stepDefintions;
+package stepDefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -8,10 +8,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import otherFunctions.driverSetup;
 
 import java.util.concurrent.TimeUnit;
 
-public class AddToWishlistTest {
+public class AddToWishlistSteps {
     double cheapest;
     WebDriver driver;
     double itemPrice1;
